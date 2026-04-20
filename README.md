@@ -1,6 +1,8 @@
-# Boosting — AdaBoost from Scratch
+# AdaBoost from Scratch
 
 A Jupyter notebook that implements the **AdaBoost** algorithm from scratch using decision stumps as weak learners, then benchmarks the custom implementation against scikit-learn's `AdaBoostClassifier`, `GradientBoostingClassifier`, and `RandomForestClassifier` on multiple synthetic datasets.
+
+This was Exercise 2 of course 3945 (Machine Learning), 2025A.
 
 ---
 
@@ -109,7 +111,7 @@ See the notebook for full plots, tables, and discussion.
 
 ```
 ml-boosting-notebook/
-├── Boosting.ipynb       # The main notebook
+├── AdaBoost.ipynb       # The main notebook
 ├── README.md            # This file
 ├── requirements.txt     # Python dependencies
 └── .gitignore
@@ -135,7 +137,7 @@ pip install -r requirements.txt
 git clone https://github.com/galsnir/ml-boosting-notebook.git
 cd ml-boosting-notebook
 pip install -r requirements.txt
-jupyter notebook Boosting.ipynb
+jupyter notebook AdaBoost.ipynb
 ```
 
 Then run the cells top-to-bottom. The notebook is fully self-contained — no external data files are required (datasets are generated with scikit-learn helpers such as `make_circles`, `make_classification`, `make_moons`, and `make_gaussian_quantiles`).
