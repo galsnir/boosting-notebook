@@ -6,7 +6,7 @@ This repository contains a Jupyter notebook implementing boosting algorithms (Ad
 
 ## Contents
 
-- `3945_2025A_HW2.ipynb` — main notebook with all exercises and results.
+- `Boosting.ipynb` — main notebook with all exercises and results.
 
 ## Requirements
 
@@ -25,5 +25,5 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-jupyter notebook 3945_2025A_HW2.ipynb
+jupyter notebook Boosting.ipynb
 ```
