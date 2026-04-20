@@ -2,8 +2,6 @@
 
 A Jupyter notebook that implements the **AdaBoost** algorithm from scratch using decision stumps as weak learners, then benchmarks the custom implementation against scikit-learn's `AdaBoostClassifier`, `GradientBoostingClassifier`, and `RandomForestClassifier` on multiple synthetic datasets.
 
-This was Exercise 2 of course 3945 (Machine Learning), 2025A.
-
 ---
 
 ## Table of contents
