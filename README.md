@@ -38,7 +38,7 @@ This notebook:
 
 | Section | Description |
 | --- | --- |
-| **Algorithm design** | Explanation of the AdaBoost loop, how weights are updated, and how each stump's contribution \(\alpha\) is computed. |
+| **Algorithm design** | Explanation of the AdaBoost loop, how weights are updated, and how each stump's contribution $\alpha$ is computed. |
 | **Implementation** | A `DecisionStump` class plus an `AdaBoostCustom` class with `fit` / `predict` methods. |
 | **Demonstration** | Trained on a 2-D concentric circles dataset; decision boundary is plotted and inspected. |
 | **Hyperparameter selection** | Train/test error curves vs. `n_estimators` to pick a sweet spot before overfitting. |
@@ -49,18 +49,27 @@ This notebook:
 
 ## Algorithm design
 
-The custom AdaBoost works as follows for a binary problem with labels \(y_i \in \{-1, +1\}\):
+The custom AdaBoost works as follows for a binary problem with labels $y_i \in \\{-1, +1\\}$:
 
-1. Initialize sample weights uniformly: \(w_i = 1/N\).
-2. For \(t = 1 \dots T\):
-   - Fit a `DecisionStump` that minimizes the weighted classification error \(\varepsilon_t = \sum_i w_i \cdot \mathbb{1}[h_t(x_i) \neq y_i]\).
-   - Compute the stump's weight \(\alpha_t = \tfrac{1}{2}\ln\!\big(\tfrac{1-\varepsilon_t}{\varepsilon_t}\big)\).
-   - Update sample weights \(w_i \leftarrow w_i \cdot e^{-\alpha_t y_i h_t(x_i)}\) and renormalize.
-3. Final prediction: \(\hat{y}(x) = \operatorname{sign}\!\big(\sum_t \alpha_t h_t(x)\big)\).
+1. Initialize sample weights uniformly: $w_i = 1/N$.
+2. For $t = 1, \dots, T$:
+   - Fit a `DecisionStump` that minimizes the weighted classification error
+
+$$ \varepsilon_t = \sum_i w_i \cdot \mathbb{1}[h_t(x_i) \neq y_i] $$
+
+   - Compute the stump's weight
+
+$$ \alpha_t = \tfrac{1}{2} \ln \\!\left( \tfrac{1 - \varepsilon_t}{\varepsilon_t} \right) $$
+
+   - Update sample weights $w_i \leftarrow w_i \cdot e^{-\alpha_t y_i h_t(x_i)}$ and renormalize.
+
+3. Final prediction:
+
+$$ \hat{y}(x) = \operatorname{sign}\\!\left( \sum_t \alpha_t \, h_t(x) \right) $$
 
 ### Differences vs. `sklearn.ensemble.AdaBoostClassifier`
 
-- **Aggregation**: the custom implementation uses a weighted sum of \(\alpha\) values + `np.sign`. Sklearn uses a weighted majority vote and natively supports multiclass (SAMME / SAMME.R).
+- **Aggregation**: the custom implementation uses a weighted sum of $\alpha$ values + `np.sign`. Sklearn uses a weighted majority vote and natively supports multiclass (SAMME / SAMME.R).
 - **Error computation**: the custom version computes the weighted error directly; sklearn uses a numerically optimized routine.
 - **Base estimator**: the custom version is hard-wired to a `DecisionStump`. Sklearn accepts any base estimator (defaults to `DecisionTreeClassifier(max_depth=1)`).
 
