@@ -59,13 +59,13 @@ $$ \varepsilon_t = \sum_i w_i \cdot \mathbb{1}[h_t(x_i) \neq y_i] $$
 
    - Compute the stump's weight
 
-$$ \alpha_t = \tfrac{1}{2} \ln \\!\left( \tfrac{1 - \varepsilon_t}{\varepsilon_t} \right) $$
+$$ \alpha_t = \tfrac{1}{2} \ln \left( \tfrac{1 - \varepsilon_t}{\varepsilon_t} \right) $$
 
    - Update sample weights $w_i \leftarrow w_i \cdot e^{-\alpha_t y_i h_t(x_i)}$ and renormalize.
 
 3. Final prediction:
 
-$$ \hat{y}(x) = \operatorname{sign}\\!\left( \sum_t \alpha_t \, h_t(x) \right) $$
+$$ \hat{y}(x) = \mathrm{sign} \left( \sum_t \alpha_t \, h_t(x) \right) $$
 
 ### Differences vs. `sklearn.ensemble.AdaBoostClassifier`
 
